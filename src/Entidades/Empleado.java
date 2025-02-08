@@ -8,73 +8,55 @@ package Entidades;
  *
  * @author Usuario
  */
-public class Empleado {
-    private int IdEmpleado;
-    private String Cedula;
-    private String Nombre;
-    private String Apellido;
-    private String Telefono;
-    private String Direccion;
+public class Empleado extends Persona {
+    private int idEmpleado;
+    private int idLocal;    // Clave foránea de Local
+    private int idPuesto; 
 
     public Empleado() {
     }
 
-    public Empleado(int IdEmpleado, String Cedula, String Nombre, String Apellido, String Telefono, String Direccion) {
-        this.IdEmpleado = IdEmpleado;
-        this.Cedula = Cedula;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Telefono = Telefono;
-        this.Direccion = Direccion;
+
+    public Empleado( String Cedula, String Nombre, String Apellido, String Telefono, String Direccion,int idEmpleado, int idLocal, int idPuesto) {
+        super(Cedula, Nombre, Apellido, Telefono, Direccion);
+        this.idEmpleado = idEmpleado;
+        this.idLocal = idLocal;
+        this.idPuesto = idPuesto;
     }
 
     public int getIdEmpleado() {
-        return IdEmpleado;
+        return idEmpleado;
     }
 
-    public void setIdEmpleado(int IdEmpleado) {
-        this.IdEmpleado = IdEmpleado;
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
-    public String getCedula() {
-        return Cedula;
+    public int getIdLocal() {
+        return idLocal;
     }
 
-    public void setCedula(String Cedula) {
-        this.Cedula = Cedula;
+    public void setIdLocal(int idLocal) {
+        this.idLocal = idLocal;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public int getIdPuesto() {
+        return idPuesto;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setIdPuesto(int idPuesto) {
+        this.idPuesto = idPuesto;
     }
+    
 
-    public String getApellido() {
-        return Apellido;
-    }
 
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
-    }
+   
+    
+    
+    
 
-    public String getTelefono() {
-        return Telefono;
-    }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
-    }
-
-    public String getDireccion() {
-        return Direccion;
-    }
-
-    public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
-    }
+    
     
     
 }

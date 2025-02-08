@@ -21,8 +21,8 @@ public class Prestamo extends Usuario{
         super();
     }
 
-    public Prestamo( int IdUsuario, String Cedula, String Nombre, String Apellido, String Telefono, String Direccion,int IdPrestamo, int IdLibro, Date FechaPrestamo, Date FechaDevolucion, String Estado) {
-        super(IdUsuario, Cedula, Nombre, Apellido, Telefono, Direccion);
+    public Prestamo( String Cedula, String Nombre, String Apellido, String Telefono, String Direccion,int IdUsuario,int IdPrestamo, int IdLibro, Date FechaPrestamo, Date FechaDevolucion, String Estado) {
+        super(Cedula, Nombre, Apellido, Telefono, Direccion,IdUsuario);
         this.IdPrestamo = IdPrestamo;
         this.IdLibro = IdLibro;
         this.FechaPrestamo = FechaPrestamo;

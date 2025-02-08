@@ -8,21 +8,20 @@ package Entidades;
  *
  * @author Usuario
  */
-public class Autor {
+public class Autor extends Persona {
     private int IdAutor;
-    private String Nombre;
-    private String Apellido;
-    private String Nacionalidad;
 
     public Autor() {
         //CAJAMARCA X MARITZA
     }
 
-    public Autor(int IdAutor, String Nombre, String Apellido, String Nacionalidad) {
+    public Autor(int IdAutor) {
         this.IdAutor = IdAutor;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Nacionalidad = Nacionalidad;
+    }
+
+    public Autor(String Cedula, String Nombre, String Apellido, String Telefono, String Direccion, int IdAutor) {
+        super(Cedula, Nombre, Apellido, Telefono, Direccion);
+        this.IdAutor = IdAutor;
     }
 
     public int getIdAutor() {
@@ -32,30 +31,9 @@ public class Autor {
     public void setIdAutor(int IdAutor) {
         this.IdAutor = IdAutor;
     }
+    
 
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
-
-    public String getApellido() {
-        return Apellido;
-    }
-
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
-    }
-
-    public String getNacionalidad() {
-        return Nacionalidad;
-    }
-
-    public void setNacionalidad(String Nacionalidad) {
-        this.Nacionalidad = Nacionalidad;
-    }
+   
     
     
 }

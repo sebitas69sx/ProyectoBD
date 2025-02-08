@@ -24,7 +24,7 @@ public class AutorDAO {
 
     private static final String Consultar = "Select * from autor";
     private static final String Insertar = "insert into autor values(?,?,?,?)";
-    private static final String Modificar = "update autor set idautor=?,, nombre=?, apellido=?, nacionalidad=?, where idautor=?";
+    private static final String Modificar = "update autor set idautor=?, nombre=?, apellido=?, nacionalidad=? where idautor=?";
     private static final String Eliminar = "delete from autor where idautor=?";
 
     public boolean InsertarAutor(Autor oa) {
@@ -109,7 +109,7 @@ public class AutorDAO {
 
     public DefaultTableModel MostrarAutor(List<Autor> Lista) {
         String[] titulos = {"ID", "Nombre", "Apellido","Nacionalidad"};
-        String[] registro = new String[6];
+        String[] registro = new String[4];
         DefaultTableModel modelo = new DefaultTableModel(null, titulos);
 
         for (Autor oa : Lista) {

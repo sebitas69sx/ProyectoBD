@@ -133,7 +133,7 @@ public class frmAutor extends javax.swing.JFrame {
             int id = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
             String nombre = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
             String apellido = jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString();
-            String nacionalidad = jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString();
+            String nacionalidad = jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString();
 
             Autor obc = new Autor(id, nombre, apellido, nacionalidad);
             frmEditAutor frm = new frmEditAutor("Modificar");
@@ -153,7 +153,7 @@ public class frmAutor extends javax.swing.JFrame {
                 int id = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
                 String nombre = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
                 String apellido = jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString();
-                String nacionalidad = jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString();
+                String nacionalidad = jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString();
 
                 Autor obc = new Autor(id, nombre, apellido, nacionalidad);
                 ctdao.EliminarAutor(obc);

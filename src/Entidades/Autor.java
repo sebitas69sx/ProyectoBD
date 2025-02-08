@@ -15,7 +15,7 @@ public class Autor {
     private String Nacionalidad;
 
     public Autor() {
-        //Say my name
+        //Say my name fuck me
     }
 
     public Autor(int IdAutor, String Nombre, String Apellido, String Nacionalidad) {

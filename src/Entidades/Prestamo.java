@@ -10,24 +10,33 @@ import java.util.Date;
  *
  * @author Usuario
  */
-public class Prestamo extends Usuario{
+public class Prestamo{
     private int IdPrestamo;
     private int IdLibro;
+    private int IdUsuario;
     private Date FechaPrestamo;
     private Date FechaDevolucion;
     private String Estado;
 
     public Prestamo() {
-        super();
+        
     }
 
-    public Prestamo( String Cedula, String Nombre, String Apellido, String Telefono, String Direccion,int IdUsuario,int IdPrestamo, int IdLibro, Date FechaPrestamo, Date FechaDevolucion, String Estado) {
-        super(Cedula, Nombre, Apellido, Telefono, Direccion,IdUsuario);
+    public Prestamo(int IdPrestamo, int IdLibro,int IdUsuario, Date FechaPrestamo, Date FechaDevolucion, String Estado) {
         this.IdPrestamo = IdPrestamo;
         this.IdLibro = IdLibro;
+        this.IdUsuario = IdUsuario;
         this.FechaPrestamo = FechaPrestamo;
         this.FechaDevolucion = FechaDevolucion;
         this.Estado = Estado;
+    }
+
+    public int getIdUsuario() {
+        return IdUsuario;
+    }
+
+    public void setIdUsuario(int IdUsuario) {
+        this.IdUsuario = IdUsuario;
     }
 
     public int getIdPrestamo() {

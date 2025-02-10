@@ -24,7 +24,7 @@ public class PrestamoDAO {
     private static final String MODIFICAR = "UPDATE libro SET IdLibro=?,IdUsuario=?, FechaPrestamo=?, FechaDevolucion=?, Estado=? WHERE IdPrestamo=?";
     private static final String ELIMINAR = "DELETE FROM local WHERE IdPrestamo=?";
     
-    public boolean InsertarEmpleado(Prestamo oe) {
+    public boolean InsertarPrestamo(Prestamo oe) {
         Conexion con = new Conexion();
         boolean op = false;
         try (Connection connection = con.ObtenerConexion()) {
@@ -46,7 +46,7 @@ public class PrestamoDAO {
         return op;
     }
     
-    public boolean ModificarEmpleado(Prestamo oe) {
+    public boolean ModificarPrestamo(Prestamo oe) {
         Conexion con = new Conexion();
         boolean op = false;
         try (Connection connection = con.ObtenerConexion()) {
@@ -68,7 +68,7 @@ public class PrestamoDAO {
         return op;
     }
     
-    public boolean EliminarEmpleado(Prestamo oe) {
+    public boolean EliminarPrestamo(Prestamo oe) {
         Conexion con = new Conexion();
         boolean op = false;
         try (Connection connection = con.ObtenerConexion()) {
@@ -85,7 +85,7 @@ public class PrestamoDAO {
         return op;
     }
     
-    public List<Prestamo> ListarEmpleado() {
+    public List<Prestamo> ListarPrestamo() {
         List<Prestamo> Lista = new ArrayList<>();
         try {
             Conexion con = new Conexion();
@@ -108,7 +108,7 @@ public class PrestamoDAO {
         }
         return Lista;
     }
-    public DefaultTableModel MostrarEmpleado(List<Prestamo> Lista) {
+    public DefaultTableModel MostrarPrestamo(List<Prestamo> Lista) {
         String[] titulos = {"ID", "Libro", "Usuario", "Fecha prestamo", "Fecha devolucion", "Estado"};
         String[] registro = new String[6];
         DefaultTableModel modelo = new DefaultTableModel(null, titulos);

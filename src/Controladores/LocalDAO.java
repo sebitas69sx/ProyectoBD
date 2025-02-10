@@ -25,7 +25,7 @@ public class LocalDAO {
     private static final String MODIFICAR = "UPDATE libro SET Nombre=?, Direccion=?,Telefono=? WHERE IdLocal=?";
     private static final String ELIMINAR = "DELETE FROM local WHERE IdLocal=?";
     
-    public boolean InsertarLibro(Local loc) {
+    public boolean InsertarLocal(Local loc) {
         Conexion con = new Conexion();
         boolean op = false;
         try (Connection connection = con.ObtenerConexion()) {
@@ -44,7 +44,7 @@ public class LocalDAO {
         return op;
     }
     
-    public boolean ModificarLibro(Local loc) {
+    public boolean ModificarLocal(Local loc) {
         Conexion con = new Conexion();
         boolean op = false;
         try (Connection connection = con.ObtenerConexion()) {
@@ -64,7 +64,7 @@ public class LocalDAO {
         return op;
     }
     
-    public boolean EliminarLibro(Local loc) {
+    public boolean EliminarLocal(Local loc) {
         Conexion con = new Conexion();
         boolean op = false;
         try (Connection connection = con.ObtenerConexion()) {
@@ -81,7 +81,7 @@ public class LocalDAO {
         return op;
     }
     
-    public List<Local> ListarLibro() {
+    public List<Local> ListarLocal() {
         List<Local> Lista = new ArrayList<>();
         try {
             Conexion con = new Conexion();
@@ -103,7 +103,7 @@ public class LocalDAO {
         return Lista;
     }
     
-    public DefaultTableModel MostrarLibro(List<Local> Lista) {
+    public DefaultTableModel MostrarLocal(List<Local> Lista) {
         String[] titulos = {"ID", "Nombre", "Direccion", "Telefono"};
         String[] registro = new String[4];
         DefaultTableModel modelo = new DefaultTableModel(null, titulos);

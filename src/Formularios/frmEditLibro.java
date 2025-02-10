@@ -232,7 +232,7 @@ public class frmEditLibro extends javax.swing.JFrame {
                     libroDAO.ModificarLibro(libro);
                 }
                 
-                frmCategoria.ListarCategorias();
+                frmLibro.ListarLibros();
                 this.dispose();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());

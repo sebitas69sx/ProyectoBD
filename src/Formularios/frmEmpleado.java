@@ -45,6 +45,14 @@ public class frmEmpleado extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,13 +92,61 @@ public class frmEmpleado extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton4.setText("BUSCAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("jMenuItem3");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("jMenuItem4");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -99,29 +155,27 @@ public class frmEmpleado extends javax.swing.JFrame {
                             .addComponent(jButton2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(255, 255, 255)))
+                        .addGap(180, 180, 180)
+                        .addComponent(jButton4)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton3)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,7 +197,7 @@ public class frmEmpleado extends javax.swing.JFrame {
             int idLocal = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
             int idPuesto = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 7).toString());
 
-             Empleado emp = new Empleado(cedula, nombre, apellido, telefono, direccion,id,idLocal, idPuesto);
+            Empleado emp = new Empleado(cedula, nombre, apellido, telefono, direccion, id, idLocal, idPuesto);
             frmEditEmpleado frm = new frmEditEmpleado("Modificar");
             frm.setDatos(emp);
             frm.setVisible(true);
@@ -155,7 +209,7 @@ public class frmEmpleado extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (jTable1.getSelectedRow() >= 0) {
             EmpleadoDAO empDAO = new EmpleadoDAO();
-            int resp = JOptionPane.showConfirmDialog(null, "Eliminar Empleado", "¿Está seguro que desea eliminar el empleado de la Base de Datos?",JOptionPane.YES_NO_OPTION);
+            int resp = JOptionPane.showConfirmDialog(null, "Eliminar Empleado", "¿Está seguro que desea eliminar el empleado de la Base de Datos?", JOptionPane.YES_NO_OPTION);
 
             if (resp == JOptionPane.YES_OPTION) {
                 int id = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
@@ -167,7 +221,7 @@ public class frmEmpleado extends javax.swing.JFrame {
                 int idLocal = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
                 int idPuesto = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 7).toString());
 
-                Empleado emp = new Empleado(cedula, nombre, apellido, telefono, direccion,id,idLocal, idPuesto);
+                Empleado emp = new Empleado(cedula, nombre, apellido, telefono, direccion, id, idLocal, idPuesto);
                 empDAO.EliminarEmpleado(emp);
                 ListarEmpleados();
             }
@@ -175,6 +229,66 @@ public class frmEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "SELECCIONE LA FILA A ELIMINAR");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        EmpleadoDAO empDAO = new EmpleadoDAO();
+        empDAO.reporteConteoEmpleados();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+
+        String idLocalStr = JOptionPane.showInputDialog(this,
+                "Ingrese el ID del Local:",
+                "Reporte por Local",
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (idLocalStr != null && !idLocalStr.trim().isEmpty()) {
+            try {
+                int idLocal = Integer.parseInt(idLocalStr);
+                EmpleadoDAO empDAO = new EmpleadoDAO();
+                empDAO.reporteEmpleadosPorLocal(idLocal);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this,
+                        "Por favor ingrese un número válido",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String busqueda = JOptionPane.showInputDialog(this,
+                "Ingrese el nombre o apellido a buscar:",
+                "Búsqueda de Empleados",
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (busqueda != null && !busqueda.trim().isEmpty()) {
+            EmpleadoDAO empDAO = new EmpleadoDAO();
+            empDAO.buscarEmpleadosJOption(busqueda);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+      String idPuestoStr = JOptionPane.showInputDialog(this,"Ingrese el ID del Puesto:","Reporte por Puesto",JOptionPane.QUESTION_MESSAGE);
+
+        if (idPuestoStr != null && !idPuestoStr.trim().isEmpty()) {
+            try {
+                int idPuesto = Integer.parseInt(idPuestoStr);
+                EmpleadoDAO empDAO = new EmpleadoDAO();
+                empDAO.reporteEmpleadosPorPuesto(idPuesto);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this,
+                        "Por favor ingrese un número válido","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+  
+        EmpleadoDAO empDAO = new EmpleadoDAO();
+    empDAO.reporteEstadisticasPersonal();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,7 +329,15 @@ public class frmEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

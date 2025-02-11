@@ -21,6 +21,8 @@ public class frmPrestamo extends javax.swing.JFrame {
      */
     public frmPrestamo() {
         initComponents();
+        setLocationRelativeTo(this);
+        ListarPrestamos();
     }
     
     public static void ListarPrestamos() {

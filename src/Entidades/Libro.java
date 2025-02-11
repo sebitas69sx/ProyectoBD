@@ -15,19 +15,17 @@ public class Libro{
     private int IdLocal;
     private int IdAutor;
     private int IdCategoria;
-    private int IdPrestamo;
 
     public Libro() {
     }
 
-    public Libro(int IdLibro, String Nombre, String Editorial, int IdLocal, int IdAutor, int IdCategoria, int IdPrestamo) {
+    public Libro(int IdLibro, String Nombre, String Editorial, int IdLocal, int IdAutor, int IdCategoria) {
         this.IdLibro = IdLibro;
         this.Nombre = Nombre;
         this.Editorial = Editorial;
         this.IdLocal = IdLocal;
         this.IdAutor = IdAutor;
         this.IdCategoria = IdCategoria;
-        this.IdPrestamo = IdPrestamo;
     }
 
     public int getIdLibro() {
@@ -78,13 +76,5 @@ public class Libro{
         this.IdCategoria = IdCategoria;
     }
 
-    public int getIdPrestamo() {
-        return IdPrestamo;
-    }
-
-    public void setIdPrestamo(int IdPrestamo) {
-        this.IdPrestamo = IdPrestamo;
-    }
-    
     
 }

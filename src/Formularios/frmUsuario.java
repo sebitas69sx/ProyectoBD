@@ -20,6 +20,7 @@ public class frmUsuario extends javax.swing.JFrame {
      */
     public frmUsuario() {
         initComponents();
+        ListarUsuarios();
     }
 
     public static void ListarUsuarios() {

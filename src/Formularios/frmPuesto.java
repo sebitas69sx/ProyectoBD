@@ -20,6 +20,7 @@ public class frmPuesto extends javax.swing.JFrame {
      */
     public frmPuesto() {
         initComponents();
+        ListarPuestos();
     }
 
     public static void ListarPuestos() {

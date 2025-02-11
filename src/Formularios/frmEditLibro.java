@@ -4,8 +4,17 @@
  */
 package Formularios;
 
+import Controladores.AutorDAO;
+import Controladores.CategoriaDAO;
 import Controladores.LibroDAO;
+import Controladores.LocalDAO;
+import Controladores.PrestamoDAO;
+import Entidades.Autor;
+import Entidades.Categoria;
 import Entidades.Libro;
+import Entidades.Local;
+import Entidades.Prestamo;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +30,39 @@ public class frmEditLibro extends javax.swing.JFrame {
     public frmEditLibro(String fun) {
         this.Funcion = fun;
         initComponents();
+        CargarLocales();
+        CargarAutor();
+        CargarCategorias();
     }
+    
+     private void CargarLocales() {
+        List<Local> locales = ol.ListarLocal();
+        jComboBox1.removeAllItems();
+        for (Local cat : locales) {
+            jComboBox1.addItem(String.valueOf(cat.getIdLocal()));
+        }
+    }
+    
+     private void CargarAutor() {
+        List<Autor> autores = oa.ListarAutor();
+        jComboBox2.removeAllItems();
+        for (Autor cat : autores) {
+            jComboBox2.addItem(String.valueOf(cat.getIdAutor()));
+        }
+    }
+     
+      private void CargarCategorias() {
+        List<Categoria> categorias = oc.ListarCategoria();
+        jComboBox3.removeAllItems();
+        for (Categoria cat : categorias) {
+            jComboBox3.addItem(String.valueOf(cat.getIdCategoria()));
+        }
+    }
+
+       
+        LocalDAO ol = new LocalDAO();
+        AutorDAO oa = new AutorDAO();
+        CategoriaDAO oc = new CategoriaDAO();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,11 +94,9 @@ public class frmEditLibro extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
 
         jLabel2.setText("Codigo:");
 
@@ -111,8 +150,6 @@ public class frmEditLibro extends javax.swing.JFrame {
 
         jLabel11.setText("ID Categoria:");
 
-        jLabel12.setText("ID Prestamo:");
-
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -147,15 +184,13 @@ public class frmEditLibro extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField6)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -187,11 +222,7 @@ public class frmEditLibro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
@@ -207,7 +238,6 @@ public class frmEditLibro extends javax.swing.JFrame {
         jTextField4.setText(String.valueOf(lib.getIdLocal()));
         jComboBox1.setSelectedItem(String.valueOf(lib.getIdAutor()));
         jComboBox2.setSelectedItem(String.valueOf(lib.getIdCategoria()));
-        jComboBox3.setSelectedItem(String.valueOf(lib.getIdPrestamo()));
     }
  
  LibroDAO libroDAO = new LibroDAO();
@@ -220,17 +250,16 @@ public class frmEditLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (!jTextField1.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("")) {
+        if (!jTextField4.getText().equals("") && !jTextField5.getText().equals("") && !jTextField6.getText().equals("")) {
             try {
-                int id = Integer.parseInt(jTextField1.getText());
-                String nombre = jTextField2.getText();
-                String editorial = jTextField3.getText();
+                int id = Integer.parseInt(jTextField4.getText());
+                String nombre = jTextField5.getText();
+                String editorial = jTextField6.getText();
                 int idLocal = Integer.parseInt( jComboBox1.getSelectedItem().toString());
                 int idAutor = Integer.parseInt( jComboBox2.getSelectedItem().toString());
                 int idCategoria = Integer.parseInt( jComboBox3.getSelectedItem().toString());
-                int idPrestamo = Integer.parseInt( jComboBox4.getSelectedItem().toString());
 
-                Libro libro = new Libro(id, nombre, editorial, idLocal, idAutor, idCategoria, idPrestamo);
+                Libro libro = new Libro(id, nombre, editorial, idLocal, idAutor, idCategoria);
 
                 if (Funcion.equals("Insertar")) {
                     libroDAO.InsertarLibro(libro);
@@ -299,11 +328,9 @@ public class frmEditLibro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

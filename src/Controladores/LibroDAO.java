@@ -20,8 +20,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LibroDAO {
      private static final String CONSULTAR = "SELECT * FROM libro";
-    private static final String INSERTAR = "INSERT INTO libro VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private static final String MODIFICAR = "UPDATE libro SET Nombre=?, Editorial=?, IdLocal=?, IdAutor=?, IdCategoria=?, IdPrestamo=? WHERE IdLibro=?";
+    private static final String INSERTAR = "INSERT INTO libro VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String MODIFICAR = "UPDATE libro SET Nombre=?, Editorial=?, IdLocal=?, IdAutor=?, IdCategoria=? WHERE IdLibro=?";
     private static final String ELIMINAR = "DELETE FROM libro WHERE IdLibro=?";
     
     public boolean InsertarLibro(Libro lib) {
@@ -35,7 +35,6 @@ public class LibroDAO {
             pst.setInt(4, lib.getIdLocal());
             pst.setInt(5, lib.getIdAutor());
             pst.setInt(6, lib.getIdCategoria());
-            pst.setInt(7, lib.getIdPrestamo());
             
             int n = pst.executeUpdate();
             if (n != 0) {
@@ -57,8 +56,7 @@ public class LibroDAO {
             pst.setInt(3, lib.getIdLocal());
             pst.setInt(4, lib.getIdAutor());
             pst.setInt(5, lib.getIdCategoria());
-            pst.setInt(6, lib.getIdPrestamo());
-            pst.setInt(7, lib.getIdLibro());
+            pst.setInt(6, lib.getIdLibro());
             
             int n = pst.executeUpdate();
             if (n != 0) {
@@ -103,7 +101,6 @@ public class LibroDAO {
                 lib.setIdLocal(resultado.getInt(4));
                 lib.setIdAutor(resultado.getInt(5));
                 lib.setIdCategoria(resultado.getInt(6));
-                lib.setIdPrestamo(resultado.getInt(7));
                 Lista.add(lib);
             }
         } catch (SQLException e) {
@@ -113,8 +110,8 @@ public class LibroDAO {
     }
     
     public DefaultTableModel MostrarLibro(List<Libro> Lista) {
-        String[] titulos = {"ID", "Nombre", "Editorial", "ID Local", "ID Autor", "ID Categoria", "ID Prestamo"};
-        String[] registro = new String[7];
+        String[] titulos = {"ID", "Nombre", "Editorial", "ID Local", "ID Autor", "ID Categoria"};
+        String[] registro = new String[6];
         DefaultTableModel modelo = new DefaultTableModel(null, titulos);
         
         for (Libro lib : Lista) {
@@ -124,7 +121,6 @@ public class LibroDAO {
             registro[3] = String.valueOf(lib.getIdLocal());
             registro[4] = String.valueOf(lib.getIdAutor());
             registro[5] = String.valueOf(lib.getIdCategoria());
-            registro[6] = String.valueOf(lib.getIdPrestamo());
             modelo.addRow(registro);
         }
         return modelo;

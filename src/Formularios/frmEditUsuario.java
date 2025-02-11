@@ -187,7 +187,7 @@ UsuarioDAO usu = new UsuarioDAO();
                     usu.ModificarUsuario(us);
                 }
                 
-                frmLibro.ListarLibros();
+                frmUsuario.ListarUsuarios();
                 this.dispose();
               
              } catch (Exception ex) {

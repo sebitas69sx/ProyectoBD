@@ -4,9 +4,14 @@
  */
 package Formularios;
 
+import Controladores.LibroDAO;
 import Controladores.PrestamoDAO;
+import Controladores.UsuarioDAO;
+import Entidades.Libro;
 import Entidades.Prestamo;
+import Entidades.Usuario;
 import java.sql.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,15 +25,36 @@ public class frmEditPrestamo extends javax.swing.JFrame {
      */
     public frmEditPrestamo(String fun) {
         initComponents();
+        CargarUsuarios();
+         CargarLibros();
         Funcion = fun;
     }
+     private void CargarLibros() {
+        List<Libro> libros = ol.ListarLibro();
+        jComboBox2.removeAllItems();
+        for (Libro cat : libros) {
+            jComboBox2.addItem(String.valueOf(cat.getIdLibro()));
+        }
+    }
+     LibroDAO ol = new LibroDAO();
+    
+    
+     private void CargarUsuarios() {
+        List<Usuario> usuarios = ou.ListarUsuario();
+        jComboBox3.removeAllItems();
+        for (Usuario cat : usuarios) {
+            jComboBox3.addItem(String.valueOf(cat.getIdUsuario()));
+        }
+    }
+    UsuarioDAO ou = new UsuarioDAO();
+     
     public String Funcion = "";
     public void setDatos(Prestamo lib) {
         jSpinner1.setValue(lib.getIdPrestamo());
-        jSpinner2.setValue(lib.getIdLibro());
-        jSpinner3.setValue(lib.getIdUsuario());
-        jDateChooser1.setDate(lib.getFechaPrestamo());
-        jDateChooser2.setDate(lib.getFechaDevolucion());
+        jComboBox2.setSelectedItem(lib.getIdLibro());
+        jComboBox3.setSelectedItem(lib.getIdUsuario());
+        jDateChooser3.setDate(lib.getFechaPrestamo());
+        jDateChooser4.setDate(lib.getFechaDevolucion());
         jComboBox1.setSelectedItem(String.valueOf(lib.getEstado()));
         }
     /**
@@ -40,21 +66,22 @@ public class frmEditPrestamo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,8 +94,6 @@ public class frmEditPrestamo extends javax.swing.JFrame {
         jLabel3.setText("ID libro:");
 
         jLabel4.setText("ID Usuario:");
-
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabel5.setText("Fecha prestamo:");
 
@@ -99,6 +124,9 @@ public class frmEditPrestamo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,16 +146,13 @@ public class frmEditPrestamo extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSpinner1)
-                            .addComponent(jSpinner2)
-                            .addComponent(jSpinner3)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox1, 0, 105, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,19 +166,22 @@ public class frmEditPrestamo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -162,7 +190,7 @@ public class frmEditPrestamo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,10 +203,12 @@ public class frmEditPrestamo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             int id = Integer.parseInt(jSpinner1.getValue().toString());
-            int lib = Integer.parseInt(jSpinner2.getValue().toString());
-            int us = Integer.parseInt(jSpinner3.getValue().toString());
-            Date fp = (Date) jDateChooser1.getDate();
-            Date fp2 = (Date) jDateChooser2.getDate();
+            int lib = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+            int us = Integer.parseInt(jComboBox3.getSelectedItem().toString());
+           
+            
+            Date fp= new java.sql.Date(jDateChooser3.getDate().getTime());
+            Date fp2 = new java.sql.Date(jDateChooser4.getDate().getTime());
             String est = jComboBox1.getSelectedItem().toString();
             Prestamo pre = new Prestamo(id, lib, us, fp, fp2, est);
             if (Funcion.equals("Insertar")) {
@@ -187,7 +217,7 @@ public class frmEditPrestamo extends javax.swing.JFrame {
                 prest.ModificarPrestamo(pre);
             }
 
-            frmPrestamo.ListarPrestamos();
+            frmPrestamos.ListarPrestamos();
             this.dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -233,8 +263,11 @@ public class frmEditPrestamo extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateChooser4;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -243,7 +276,5 @@ public class frmEditPrestamo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     // End of variables declaration//GEN-END:variables
 }

@@ -152,7 +152,7 @@ PuestoDAO puestoDAO = new PuestoDAO();
                     puestoDAO.ModificarPuesto(puesto);
                 }
                 
-                frmLocal.ListarLocales();
+                frmPuesto.ListarPuestos();
                 this.dispose();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());

@@ -135,9 +135,8 @@ public class frmLibro extends javax.swing.JFrame {
             int idLocal = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
             int idAutor = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
             int idCategoria = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
-            int idPrestamo = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
 
-            Libro lib = new Libro(id, nombre, editorial, idLocal, idAutor, idCategoria, idPrestamo);
+            Libro lib = new Libro(id, nombre, editorial, idLocal, idAutor, idCategoria);
             frmEditLibro frm = new frmEditLibro("Modificar");
             frm.setDatos(lib);
             frm.setVisible(true);
@@ -157,9 +156,7 @@ public class frmLibro extends javax.swing.JFrame {
                 int idLocal = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
                 int idAutor = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
                 int idCategoria = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
-                int idPrestamo = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
-
-                Libro lib = new Libro(id, nombre, editorial, idLocal, idAutor, idCategoria, idPrestamo);
+                Libro lib = new Libro(id, nombre, editorial, idLocal, idAutor, idCategoria);
                 libDAO.EliminarLibro(lib);
                 ListarLibros();
             }

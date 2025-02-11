@@ -4,7 +4,14 @@
  */
 package Formularios;
 
+import Controladores.EmpleadoDAO;
+import Controladores.LocalDAO;
+import Controladores.PuestoDAO;
 import Entidades.Empleado;
+import Entidades.Local;
+import Entidades.Puesto;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +27,29 @@ public class frmEditEmpleado extends javax.swing.JFrame {
     public frmEditEmpleado(String fun) {
         this.Funcion = fun;
         initComponents();
+        CargarLocales();
+        CargarPuestos();
     }
+    
+    private void CargarLocales() {
+        List<Local> locales = ol.ListarLocal();
+        jComboBox1.removeAllItems();
+        for (Local cat : locales) {
+            jComboBox1.addItem(String.valueOf(cat.getIdLocal()));
+        }
+    }
+    
+     private void CargarPuestos() {
+        List<Puesto> puestos = op.ListarPuesto();
+        jComboBox2.removeAllItems();
+        for (Puesto pu : puestos) {
+            jComboBox2.addItem(String.valueOf(pu.getIdPuesto()));
+        }
+    }
+     
+     EmpleadoDAO olnc = new EmpleadoDAO();
+    LocalDAO ol = new LocalDAO();
+    PuestoDAO op= new PuestoDAO();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,7 +225,41 @@ public void setDatos(Empleado emp) {
         jComboBox1.setSelectedItem(String.valueOf(emp.getIdPuesto()));
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+  if (!jTextField1.getText().equals("")
+                && !jTextField2.getText().equals("")
+                && !jTextField3.getText().equals("")
+                && !jTextField4.getText().equals("")
+                && !jTextField5.getText().equals("")
+                && !jTextField6.getText().equals("")) {
 
+            try {
+                int idEmpleado = Integer.parseInt(jTextField1.getText());
+                String cedula = jTextField2.getText();
+                String nombre = jTextField3.getText();
+                String apellido = jTextField4.getText();
+                String telefono = jTextField5.getText();
+                String direccion = jTextField6.getText();
+                int idLocal = jComboBox1.getSelectedIndex();
+                int idPuesto = jComboBox2.getSelectedIndex();
+
+                Empleado emp = new Empleado(cedula, nombre, apellido, telefono, direccion, idEmpleado, idLocal, idPuesto);
+
+                if (Funcion.equals("Insertar")) {
+                    olnc.InsertarEmpleado(emp);
+                } else {
+                    olnc.ModificarEmpleado(emp);
+                }
+
+                frmEmpleado.ListarEmpleados();
+                this.dispose();
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese correctamente los datos");
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

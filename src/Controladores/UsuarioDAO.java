@@ -85,7 +85,7 @@ public class UsuarioDAO {
         return op;
     }
     
-    public List<Usuario> ListarUsuarios() {
+    public List<Usuario> ListarUsuario() {
         List<Usuario> Lista = new ArrayList<>();
         try {
             Conexion con = new Conexion();

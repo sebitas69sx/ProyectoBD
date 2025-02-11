@@ -12,8 +12,6 @@ public class Usuario extends Persona{
     private int IdUsuario;
 
     public Usuario() {
-        //HOLA a
-        //AJSDA
     }
 
 

@@ -7,6 +7,7 @@ package Controladores;
 import Datos.Conexion;
 import Entidades.Libro;
 import Entidades.Prestamo;
+import Entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -147,14 +148,14 @@ public class PrestamoDAO {
         int id = 0;
         int min = Integer.MAX_VALUE;
         int idmin = 0;
-        
+
         List<Map.Entry<Integer, Integer>> lis = new ArrayList<>(librosU.entrySet());
         for (Map.Entry<Integer, Integer> entry : lis) {
             if (entry.getValue() > max) {
                 max = entry.getValue();
                 id = entry.getKey();
             }
-            if(entry.getValue() < min){
+            if (entry.getValue() < min) {
                 min = entry.getValue();
                 idmin = entry.getKey();
             }
@@ -165,7 +166,7 @@ public class PrestamoDAO {
             if (id == lib.getIdLibro()) {
                 a = lib.getNombre();
             }
-            if(idmin == lib.getIdLibro()){
+            if (idmin == lib.getIdLibro()) {
                 b = lib.getNombre();
             }
         }
@@ -173,10 +174,91 @@ public class PrestamoDAO {
         reporte.append("Libro más pedido:\n");
         reporte.append("El libro más pedido fue ").append(a)
                 .append(" con un total de ").append(max).append(" pedidos.\n");
- reporte.append("Libro menos pedido:\n");
+        reporte.append("Libro menos pedido:\n");
         reporte.append("El libro menos pedido fue ").append(b)
                 .append(" con un total de ").append(min).append(" pedidos.\n");
         JOptionPane.showMessageDialog(null, reporte.toString());
     }
+
+    public void usuariom() {
+        UsuarioDAO u = new UsuarioDAO();
+        List<Prestamo> listaPrestamos = ListarPrestamo();
+        List<Usuario> listaUsuarios = u.ListarUsuario();
+        java.util.Map<Integer, Integer> prestamosPorUsuario = new java.util.HashMap<>();
+
+        for (Prestamo prestamo : listaPrestamos) {
+            int idUsuario = prestamo.getIdUsuario();
+            prestamosPorUsuario.put(idUsuario, prestamosPorUsuario.getOrDefault(idUsuario, 0) + 1);
+        }
+
+        int max = 0, min = Integer.MAX_VALUE;
+        int idMax = 0, idMin = 0;
+
+        for (Map.Entry<Integer, Integer> entry : prestamosPorUsuario.entrySet()) {
+            if (entry.getValue() > max) {
+                max = entry.getValue();
+                idMax = entry.getKey();
+            }
+            if (entry.getValue() < min) {
+                min = entry.getValue();
+                idMin = entry.getKey();
+            }
+        }
+
+        String UsMax = "", nombreUsuarioMin = "";
+        for (Usuario usuario : listaUsuarios) {
+            if (idMax == usuario.getIdUsuario()) {
+                UsMax = usuario.getNombre() + " " + usuario.getApellido();
+            }
+            if (idMin == usuario.getIdUsuario()) {
+                nombreUsuarioMin = usuario.getNombre() + " " + usuario.getApellido();
+            }
+        }
+
+        StringBuilder reporte = new StringBuilder("REPORTE\n");
+        reporte.append("Usuario con más préstamos:\n");
+        reporte.append("El usuario que realizó más préstamos fue ").append(UsMax)
+                .append(" con un total de ").append(max).append(" préstamos.\n");
+        reporte.append("Usuario con menos préstamos:\n");
+        reporte.append("El usuario que realizó menos préstamos fue ").append(nombreUsuarioMin)
+                .append(" con un total de ").append(min).append(" préstamos.\n");
+
+        JOptionPane.showMessageDialog(null, reporte.toString());
+    }
+    
+    public void buscarPrestamo(String busqueda) {
+    List<Prestamo> listaPrestamos = ListarPrestamo();
+    StringBuilder reporte = new StringBuilder();
+    reporte.append("RESULTADOS DE BÚSQUEDA\n\n");
+
+    boolean encontrado = false;
+    busqueda = busqueda.toLowerCase();
+
+    for (Prestamo prestamo : listaPrestamos) {
+        String idPrestamo = String.valueOf(prestamo.getIdPrestamo());
+        String idUsuario = String.valueOf(prestamo.getIdUsuario());
+        String idLibro = String.valueOf(prestamo.getIdLibro());
+        String estado = prestamo.getEstado().toLowerCase();
+
+        if (idPrestamo.contains(busqueda) || idUsuario.contains(busqueda) || idLibro.contains(busqueda) || estado.contains(busqueda)) {
+            encontrado = true;
+            reporte.append("ID Préstamo: ").append(prestamo.getIdPrestamo()).append("\n");
+            reporte.append("ID Usuario: ").append(prestamo.getIdUsuario()).append("\n");
+            reporte.append("ID Libro: ").append(prestamo.getIdLibro()).append("\n");
+            reporte.append("Fecha de Préstamo: ").append(prestamo.getFechaPrestamo()).append("\n");
+            reporte.append("Fecha de Devolución: ").append(prestamo.getFechaDevolucion()).append("\n");
+            reporte.append("Estado: ").append(prestamo.getEstado()).append("\n");
+            reporte.append("------------------------------------------\n");
+        }
+    }
+
+    if (!encontrado) {
+        reporte.append("No se encontraron préstamos que coincidan con '").append(busqueda).append("'");
+    }
+
+    JOptionPane.showMessageDialog(null, reporte.toString(),
+            "Resultados de Búsqueda",
+            JOptionPane.INFORMATION_MESSAGE);
+}
 
 }

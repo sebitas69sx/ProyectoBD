@@ -5,6 +5,7 @@
 package Controladores;
 
 import Datos.Conexion;
+import Entidades.Libro;
 import Entidades.Prestamo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,8 +36,8 @@ public class PrestamoDAO {
             PreparedStatement pst = connection.prepareStatement(INSERTAR);
             pst.setInt(1, oe.getIdPrestamo());
             pst.setInt(2, oe.getIdLibro());
-           pst.setDate(3, new java.sql.Date(oe.getFechaPrestamo().getTime()));
-             pst.setDate(4, new java.sql.Date(oe.getFechaDevolucion().getTime()));
+            pst.setDate(3, new java.sql.Date(oe.getFechaPrestamo().getTime()));
+            pst.setDate(4, new java.sql.Date(oe.getFechaDevolucion().getTime()));
             pst.setString(5, oe.getEstado());
             pst.setInt(6, oe.getIdUsuario());
 
@@ -55,8 +57,8 @@ public class PrestamoDAO {
         try (Connection connection = con.ObtenerConexion()) {
             PreparedStatement pst = connection.prepareStatement(MODIFICAR);
             pst.setInt(1, oe.getIdLibro());
-             pst.setDate(2, new java.sql.Date(oe.getFechaPrestamo().getTime()));
-             pst.setDate(3, new java.sql.Date(oe.getFechaDevolucion().getTime()));
+            pst.setDate(2, new java.sql.Date(oe.getFechaPrestamo().getTime()));
+            pst.setDate(3, new java.sql.Date(oe.getFechaDevolucion().getTime()));
             pst.setString(4, oe.getEstado());
             pst.setInt(5, oe.getIdUsuario());
             pst.setInt(6, oe.getIdPrestamo());
@@ -126,6 +128,55 @@ public class PrestamoDAO {
             modelo.addRow(registro);
         }
         return modelo;
+    }
+
+    public void librom() {
+        LibroDAO l = new LibroDAO();
+        List<Prestamo> ListaP = ListarPrestamo();
+        List<Libro> ListaL = l.ListarLibro();
+        java.util.Map<Integer, Integer> librosU = new java.util.HashMap<>();
+        for (Prestamo pre : ListaP) {
+            for (Libro lib : ListaL) {
+                if (pre.getIdLibro() == lib.getIdLibro()) {
+                    int id = pre.getIdLibro();
+                    librosU.put(id, librosU.getOrDefault(id, 0) + 1);
+                }
+            }
+        }
+        int max = 0;
+        int id = 0;
+        int min = Integer.MAX_VALUE;
+        int idmin = 0;
+        
+        List<Map.Entry<Integer, Integer>> lis = new ArrayList<>(librosU.entrySet());
+        for (Map.Entry<Integer, Integer> entry : lis) {
+            if (entry.getValue() > max) {
+                max = entry.getValue();
+                id = entry.getKey();
+            }
+            if(entry.getValue() < min){
+                min = entry.getValue();
+                idmin = entry.getKey();
+            }
+        }
+        String a = "";
+        String b = "";
+        for (Libro lib : ListaL) {
+            if (id == lib.getIdLibro()) {
+                a = lib.getNombre();
+            }
+            if(idmin == lib.getIdLibro()){
+                b = lib.getNombre();
+            }
+        }
+        StringBuilder reporte = new StringBuilder("REPORTE");
+        reporte.append("Libro más pedido:\n");
+        reporte.append("El libro más pedido fue ").append(a)
+                .append(" con un total de ").append(max).append(" pedidos.\n");
+ reporte.append("Libro menos pedido:\n");
+        reporte.append("El libro menos pedido fue ").append(b)
+                .append(" con un total de ").append(min).append(" pedidos.\n");
+        JOptionPane.showMessageDialog(null, reporte.toString());
     }
 
 }

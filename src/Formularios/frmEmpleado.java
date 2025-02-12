@@ -13,14 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class frmEmpleado extends javax.swing.JFrame {
+public class frmEmpleado extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmEmpleado
      */
     public frmEmpleado() {
         initComponents();
-        setLocationRelativeTo(this);
         ListarEmpleados();
     }
 
@@ -55,6 +54,7 @@ public class frmEmpleado extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(740, 530));
 
         jLabel1.setText("ADMINISTRAR EMPLEADOS");
 
@@ -169,13 +169,13 @@ public class frmEmpleado extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jButton4))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         pack();

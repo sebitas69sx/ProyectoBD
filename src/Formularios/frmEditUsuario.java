@@ -197,6 +197,7 @@ UsuarioDAO usu = new UsuarioDAO();
      }else {
             JOptionPane.showMessageDialog(null, "Ingrese correctamente los datos");
         }
+     frmUsuario.cant();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

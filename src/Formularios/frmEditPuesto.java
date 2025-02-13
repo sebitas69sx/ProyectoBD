@@ -160,6 +160,7 @@ PuestoDAO puestoDAO = new PuestoDAO();
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese correctamente los datos");
         }
+    frmPuesto.cant();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

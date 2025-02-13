@@ -21,6 +21,7 @@ public class frmLibro extends javax.swing.JInternalFrame{
     public frmLibro() {
         initComponents();
         ListarLibros();
+        cant();
     }
 
     public static void ListarLibros() {
@@ -28,6 +29,12 @@ public class frmLibro extends javax.swing.JInternalFrame{
         List<Libro> Lista = libDAO.ListarLibro();
         jTable1.setModel(libDAO.MostrarLibro(Lista));
     }
+    
+    public static void cant(){
+        LibroDAO loc = new LibroDAO();
+        jLabel8.setText("Libros: "+loc.Cant());
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,6 +60,8 @@ public class frmLibro extends javax.swing.JInternalFrame{
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -171,6 +180,31 @@ public class frmLibro extends javax.swing.JInternalFrame{
             }
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 325, 170, 50));
+
+        jPanel2.setBackground(new java.awt.Color(77, 98, 101));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Libros:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 160, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/SDSD.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -54, 980, 650));
@@ -361,6 +395,7 @@ public class frmLibro extends javax.swing.JInternalFrame{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private static javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -369,6 +404,7 @@ public class frmLibro extends javax.swing.JInternalFrame{
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private static javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

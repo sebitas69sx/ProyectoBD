@@ -21,12 +21,18 @@ public class frmAutor extends javax.swing.JInternalFrame {
     public frmAutor() {
         initComponents();
         ListarAutores();
+        cant();
     }
 
     public static void ListarAutores() {
         AutorDAO adao = new AutorDAO();
         List<Autor> Lista = adao.ListarAutor();
         jTable1.setModel(adao.MostrarAutor(Lista));
+    }
+    
+     public static void cant(){
+        AutorDAO loc = new AutorDAO();
+        jLabel8.setText("Autores: "+loc.Cant());
     }
 
     /**
@@ -51,6 +57,8 @@ public class frmAutor extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -151,6 +159,31 @@ public class frmAutor extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, 182, 59));
 
+        jPanel2.setBackground(new java.awt.Color(77, 98, 101));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Autores:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 160, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/SDSD.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -20, 1130, 680));
 
@@ -244,8 +277,10 @@ public class frmAutor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private static javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private static javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

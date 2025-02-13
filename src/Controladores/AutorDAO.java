@@ -46,6 +46,11 @@ public class AutorDAO {
         }
         return op;
     }
+    
+    public String Cant(){
+        List<Autor> Lista = ListarAutor();
+        return Lista.size() + "";
+    }
 
     public boolean ModificarAutor(Autor oa) {
         Conexion con = new Conexion();

@@ -43,6 +43,12 @@ public class CategoriaDAO {
         return op;
     }
     
+     public String Cant(){
+        List<Categoria> Lista = ListarCategoria();
+        return Lista.size() + "";
+    }
+
+    
     public boolean ModificarCategoria(Categoria oc) {
         Conexion con = new Conexion();
         boolean op = false;

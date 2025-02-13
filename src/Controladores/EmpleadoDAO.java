@@ -50,6 +50,11 @@ public class EmpleadoDAO {
         }
         return op;
     }
+    
+    public String Cant(){
+        List<Empleado> Lista = ListarEmpleado();
+        return Lista.size() + "";
+    }
 
     public boolean ModificarEmpleado(Empleado oe) {
         Conexion con = new Conexion();
@@ -180,7 +185,7 @@ public class EmpleadoDAO {
         List<Empleado> Lista = ListarEmpleado();
         java.util.Map<Integer, Integer> conteoLocal = new java.util.HashMap<>();
 
-        // Contar empleados por local
+       
         for (Empleado emp : Lista) {
             conteoLocal.merge(emp.getIdLocal(), 1, Integer::sum);
         }
@@ -188,7 +193,7 @@ public class EmpleadoDAO {
         StringBuilder reporte = new StringBuilder();
         reporte.append("CONTEO DE EMPLEADOS POR LOCAL\n\n");
 
-        // Ordenar los locales para presentación
+       
         java.util.List<Integer> localesOrdenados = new java.util.ArrayList<>(conteoLocal.keySet());
         java.util.Collections.sort(localesOrdenados);
 
@@ -252,22 +257,22 @@ public class EmpleadoDAO {
         int puestoMayor = 0;
         int puestoMenor = 0;
 
-        // Crear mapas para contar empleados por local y puesto
+       
         java.util.Map<Integer, Integer> conteoLocal = new java.util.HashMap<>();
         java.util.Map<Integer, Integer> conteoPuesto = new java.util.HashMap<>();
 
-        // Contar empleados por local y puesto
+       
         for (Empleado emp : Lista) {
-            // Contar por local
+  
             int localCount = conteoLocal.getOrDefault(emp.getIdLocal(), 0) + 1;
             conteoLocal.put(emp.getIdLocal(), localCount);
 
-            // Contar por puesto
+          
             int puestoCount = conteoPuesto.getOrDefault(emp.getIdPuesto(), 0) + 1;
             conteoPuesto.put(emp.getIdPuesto(), puestoCount);
         }
 
-        // Encontrar máximos y mínimos para locales
+    
         for (java.util.Map.Entry<Integer, Integer> entry : conteoLocal.entrySet()) {
             if (entry.getValue() > maxEmpleadosLocal) {
                 maxEmpleadosLocal = entry.getValue();
@@ -279,7 +284,7 @@ public class EmpleadoDAO {
             }
         }
 
-        // Encontrar máximos y mínimos para puestos
+       
         for (java.util.Map.Entry<Integer, Integer> entry : conteoPuesto.entrySet()) {
             if (entry.getValue() > maxEmpleadosPuesto) {
                 maxEmpleadosPuesto = entry.getValue();
@@ -291,7 +296,7 @@ public class EmpleadoDAO {
             }
         }
 
-        // Crear mensaje para mostrar
+       
         StringBuilder mensaje = new StringBuilder();
         mensaje.append("ESTADÍSTICAS DE PERSONAL\n\n");
         mensaje.append("LOCALES:\n");

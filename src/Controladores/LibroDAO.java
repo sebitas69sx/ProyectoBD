@@ -48,6 +48,11 @@ public class LibroDAO {
         }
         return op;
     }
+    
+    public String Cant(){
+        List<Libro> Lista = ListarLibro();
+        return Lista.size() + "";
+    }
 
     public boolean ModificarLibro(Libro lib) {
         Conexion con = new Conexion();
@@ -115,12 +120,12 @@ public class LibroDAO {
     public void reporteEstadisticasLibros() {
         List<Libro> Lista = ListarLibro();
 
-        // Mapas para contar libros por local, autor y categoría
+      
         java.util.Map<Integer, Integer> librosPorLocal = new java.util.HashMap<>();
         java.util.Map<Integer, Integer> librosPorAutor = new java.util.HashMap<>();
         java.util.Map<Integer, Integer> librosPorCategoria = new java.util.HashMap<>();
 
-        // Inicializar valores de máximos y mínimos
+      
         int maxLibrosLocal = 0, minLibrosLocal = Integer.MAX_VALUE;
         int maxLibrosAutor = 0, minLibrosAutor = Integer.MAX_VALUE;
         int maxLibrosCategoria = 0, minLibrosCategoria = Integer.MAX_VALUE;
@@ -129,14 +134,14 @@ public class LibroDAO {
         int autorConMas = 0, autorConMenos = 0;
         int categoriaConMas = 0, categoriaConMenos = 0;
 
-        // Contar libros por local, autor y categoría
+       
         for (Libro lib : Lista) {
             librosPorLocal.merge(lib.getIdLocal(), 1, Integer::sum);
             librosPorAutor.merge(lib.getIdAutor(), 1, Integer::sum);
             librosPorCategoria.merge(lib.getIdCategoria(), 1, Integer::sum);
         }
 
-        // Encontrar máximos y mínimos por local
+       
         for (java.util.Map.Entry<Integer, Integer> entry : librosPorLocal.entrySet()) {
             if (entry.getValue() > maxLibrosLocal) {
                 maxLibrosLocal = entry.getValue();
@@ -148,7 +153,7 @@ public class LibroDAO {
             }
         }
 
-        // Encontrar máximos y mínimos por autor
+      
         for (java.util.Map.Entry<Integer, Integer> entry : librosPorAutor.entrySet()) {
             if (entry.getValue() > maxLibrosAutor) {
                 maxLibrosAutor = entry.getValue();
@@ -160,7 +165,7 @@ public class LibroDAO {
             }
         }
 
-        // Encontrar máximos y mínimos por categoría
+      
         for (java.util.Map.Entry<Integer, Integer> entry : librosPorCategoria.entrySet()) {
             if (entry.getValue() > maxLibrosCategoria) {
                 maxLibrosCategoria = entry.getValue();
@@ -172,7 +177,7 @@ public class LibroDAO {
             }
         }
 
-        // Crear reporte
+       
         StringBuilder reporte = new StringBuilder();
         reporte.append("ESTADÍSTICAS DE LIBROS\n\n");
         reporte.append("Total de libros: ").append(Lista.size()).append("\n\n");

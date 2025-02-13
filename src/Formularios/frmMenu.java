@@ -28,70 +28,63 @@ public class frmMenu extends javax.swing.JFrame {
      */
     public frmMenu() {
         initComponents();
-        jPanel1.setBorder(null);  // Elimina el borde del JPanel
-jPanel1.setLayout(new BorderLayout());  // Asegúrate de que el LayoutManager no esté afectando
+        jPanel1.setBorder(null);
+        jPanel1.setLayout(new BorderLayout());
 
-      
-     jButton1.setContentAreaFilled(false);  // Quita el fondo
-jButton1.setBorderPainted(false);      // Quita el borde
-jButton1.setFocusPainted(false);
-jButton1.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton1.setContentAreaFilled(false);
+        jButton1.setBorderPainted(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setHorizontalAlignment(SwingConstants.LEFT);
+        
+     
 
-jButton2.setContentAreaFilled(false);  // Quita el fondo
-jButton2.setBorderPainted(false);      // Quita el borde
-jButton2.setFocusPainted(false);
-jButton2.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton2.setContentAreaFilled(false);
+        jButton2.setBorderPainted(false);
+        jButton2.setFocusPainted(false);
+        jButton2.setHorizontalAlignment(SwingConstants.LEFT);
 
-jButton3.setContentAreaFilled(false);  // Quita el fondo
-jButton3.setBorderPainted(false);      // Quita el borde
-jButton3.setFocusPainted(false);
-jButton3.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton3.setContentAreaFilled(false);
+        jButton3.setBorderPainted(false);
+        jButton3.setFocusPainted(false);
+        jButton3.setHorizontalAlignment(SwingConstants.LEFT);
 
-jButton4.setContentAreaFilled(false);  // Quita el fondo
-jButton4.setBorderPainted(false);      // Quita el borde
-jButton4.setFocusPainted(false);
-jButton4.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton4.setContentAreaFilled(false);
+        jButton4.setBorderPainted(false);
+        jButton4.setFocusPainted(false);
+        jButton4.setHorizontalAlignment(SwingConstants.LEFT);
 
-jButton5.setContentAreaFilled(false);  // Quita el fondo
-jButton5.setBorderPainted(false);      // Quita el borde
-jButton5.setFocusPainted(false);
-jButton5.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton5.setContentAreaFilled(false);
+        jButton5.setBorderPainted(false);
+        jButton5.setFocusPainted(false);
+        jButton5.setHorizontalAlignment(SwingConstants.LEFT);
 
-jButton6.setContentAreaFilled(false);  // Quita el fondo
-jButton6.setBorderPainted(false);      // Quita el borde
-jButton6.setFocusPainted(false);
-jButton6.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton6.setContentAreaFilled(false);
+        jButton6.setBorderPainted(false);
+        jButton6.setFocusPainted(false);
+        jButton6.setHorizontalAlignment(SwingConstants.LEFT);
 
-jButton7.setContentAreaFilled(false);  // Quita el fondo
-jButton7.setBorderPainted(false);      // Quita el borde
-jButton7.setFocusPainted(false);
-jButton7.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton7.setContentAreaFilled(false);
+        jButton7.setBorderPainted(false);
+        jButton7.setFocusPainted(false);
+        jButton7.setHorizontalAlignment(SwingConstants.LEFT);
 
-jButton8.setContentAreaFilled(false);  // Quita el fondo
-jButton8.setBorderPainted(false);      // Quita el borde
-jButton8.setFocusPainted(false);
-jButton8.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la derecha
+        jButton8.setContentAreaFilled(false);
+        jButton8.setBorderPainted(false);
+        jButton8.setFocusPainted(false);
+        jButton8.setHorizontalAlignment(SwingConstants.LEFT);
 
-}
+    }
 
-
-    
-   
     private void mostrarEnPanel(JInternalFrame internal) {
-    jPanel1.removeAll();  // Limpiar el panel
-    internal.setVisible(true);  // Hacer visible el formulario
-    internal.setBorder(null);  // Eliminar el borde del internal frame
-    ((javax.swing.plaf.basic.BasicInternalFrameUI) internal.getUI()).setNorthPane(null);  // Quitar la barra de título
-    internal.setSize(750, 540);  // Establecer el tamaño adecuado
-    jPanel1.add(internal);  // Agregar el formulario al jPanel1
-    jPanel1.revalidate();  // Revalidar el panel
-    jPanel1.repaint();  // Repintar el panel
-}
-    
-    
-    
-   
-
+        jPanel1.removeAll();
+        internal.setVisible(true);
+        internal.setBorder(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) internal.getUI()).setNorthPane(null);
+        internal.setSize(750, 540);
+        jPanel1.add(internal);
+        jPanel1.revalidate();
+        jPanel1.repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,6 +103,10 @@ jButton8.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la d
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblImagen3 = new javax.swing.JLabel();
@@ -128,6 +125,8 @@ jButton8.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la d
         jPanel5 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -153,6 +152,56 @@ jButton8.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la d
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/FONDOCOR.jpg"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 300));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel8.setText("PREVIA DE NUEVOS LIBROS");
+
+        jPanel7.setBackground(new java.awt.Color(204, 0, 51));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 9, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 36, Short.MAX_VALUE)
+        );
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Captura de pantalla 2025-02-12 220811.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 280, 990, 300));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 970, 570));
 
@@ -315,51 +364,81 @@ jButton8.setHorizontalAlignment(SwingConstants.LEFT);  // Alinea el texto a la d
         jLabel4.setText("       ≡ ▼");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 70, 30));
 
+        jButton9.setBackground(new java.awt.Color(46, 56, 64));
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("MENU");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, -1, -1));
+
+        jButton10.setBackground(new java.awt.Color(46, 56, 64));
+        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("SALIR");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, -1, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 320, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-frmUsuario usuarioForm = new frmUsuario();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(usuarioForm); 
-    
+        frmUsuario usuarioForm = new frmUsuario();
+        mostrarEnPanel(usuarioForm);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-frmAutor autorForm = new frmAutor();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(autorForm);     
+        frmAutor autorForm = new frmAutor();
+        mostrarEnPanel(autorForm);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-  frmCategoria catForm = new frmCategoria();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(catForm); 
+        frmCategoria catForm = new frmCategoria();
+        mostrarEnPanel(catForm);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-  frmEmpleado mForm = new frmEmpleado();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(mForm); 
+        frmEmpleado mForm = new frmEmpleado();
+        mostrarEnPanel(mForm);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-frmLibro lForm = new frmLibro();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(lForm); 
+        frmLibro lForm = new frmLibro();
+        mostrarEnPanel(lForm);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-frmLocal lcForm = new frmLocal();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(lcForm);     
+        frmLocal lcForm = new frmLocal();
+        mostrarEnPanel(lcForm);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-frmPrestamos pForm = new frmPrestamos();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(pForm);   
+        frmPrestamos pForm = new frmPrestamos();
+        mostrarEnPanel(pForm);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-frmPuesto psForm = new frmPuesto();  // Crear la instancia de frmUsuario
-    mostrarEnPanel(psForm);    
+        frmPuesto psForm = new frmPuesto();
+        mostrarEnPanel(psForm);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,6 +477,7 @@ frmPuesto psForm = new frmPuesto();  // Crear la instancia de frmUsuario
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -405,6 +485,7 @@ frmPuesto psForm = new frmPuesto();  // Crear la instancia de frmUsuario
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
@@ -414,12 +495,16 @@ frmPuesto psForm = new frmPuesto();  // Crear la instancia de frmUsuario
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblImagen3;

@@ -117,4 +117,38 @@ public class LocalDAO {
         }
         return modelo;
     }
+    public void buscarLocal(String busqueda) {
+    List<Local> Lista = ListarLocal();
+    StringBuilder reporte = new StringBuilder();
+    reporte.append("RESULTADOS DE BÚSQUEDA\n\n");
+
+    boolean encontrado = false;
+    busqueda = busqueda.toLowerCase();
+
+    for (Local loc : Lista) {
+        if (loc.getNombre().toLowerCase().contains(busqueda)
+                || loc.getDireccion().toLowerCase().contains(busqueda)
+                || loc.getTelefono().toLowerCase().contains(busqueda)) {
+            encontrado = true;
+            reporte.append("ID: ").append(loc.getIdLocal()).append("\n");
+            reporte.append("Nombre: ").append(loc.getNombre()).append("\n");
+            reporte.append("Dirección: ").append(loc.getDireccion()).append("\n");
+            reporte.append("Teléfono: ").append(loc.getTelefono()).append("\n");
+            reporte.append("------------------------------------------\n");
+        }
+    }
+
+    if (!encontrado) {
+        reporte.append("No se encontraron locales que coincidan con '")
+                .append(busqueda).append("'");
+    }
+
+    JOptionPane.showMessageDialog(null, reporte.toString(),
+            "Resultados de Búsqueda",
+            JOptionPane.INFORMATION_MESSAGE);
+}
+    public String Cant(){
+        List<Local> Lista = ListarLocal();
+        return Lista.size() + "";
+    }
 }

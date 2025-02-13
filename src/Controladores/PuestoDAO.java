@@ -114,4 +114,38 @@ public class PuestoDAO {
         }
         return modelo;
     }
+    
+    public void buscarPuesto(String busqueda) {
+    List<Puesto> lista = ListarPuesto();
+    StringBuilder reporte = new StringBuilder();
+    reporte.append("RESULTADOS DE BÚSQUEDA\n\n");
+
+    boolean encontrado = false;
+    busqueda = busqueda.toLowerCase();
+
+    for (Puesto puesto : lista) {
+        if (puesto.getNombre().toLowerCase().contains(busqueda) ||
+            puesto.getDescripcion().toLowerCase().contains(busqueda)) {
+                
+            encontrado = true;
+            reporte.append("ID: ").append(puesto.getIdPuesto()).append("\n");
+            reporte.append("Nombre: ").append(puesto.getNombre()).append("\n");
+            reporte.append("Descripción: ").append(puesto.getDescripcion()).append("\n");
+            reporte.append("------------------------------------------\n");
+        }
+    }
+
+    if (!encontrado) {
+        reporte.append("No se encontraron puestos que coincidan con '")
+                .append(busqueda).append("'");
+    }
+
+    JOptionPane.showMessageDialog(null, reporte.toString(),
+            "Resultados de Búsqueda",
+            JOptionPane.INFORMATION_MESSAGE);
+}
+    public String Cant(){
+        List<Puesto> Lista = ListarPuesto();
+        return Lista.size() + "";
+    }
 }

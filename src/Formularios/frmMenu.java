@@ -72,7 +72,7 @@ public class frmMenu extends javax.swing.JFrame {
         jButton8.setBorderPainted(false);
         jButton8.setFocusPainted(false);
         jButton8.setHorizontalAlignment(SwingConstants.LEFT);
-
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/IconoLib")).getImage());
     }
 
     private void mostrarEnPanel(JInternalFrame internal) {

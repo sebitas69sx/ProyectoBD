@@ -225,6 +225,7 @@ public class frmLocal extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "SELECCIONE LA FILA A ELIMINAR");
         }
+       cant();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

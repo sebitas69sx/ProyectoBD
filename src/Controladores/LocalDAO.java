@@ -151,4 +151,5 @@ public class LocalDAO {
         List<Local> Lista = ListarLocal();
         return Lista.size() + "";
     }
+    
 }

@@ -219,6 +219,7 @@ public class frmEditPrestamo extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+        frmPrestamos.cant();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

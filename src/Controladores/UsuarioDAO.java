@@ -124,6 +124,47 @@ public class UsuarioDAO {
         }
         return modelo;
     }
+    
+    public void buscarUsuario(String busqueda) {
+    List<Usuario> Lista = ListarUsuario();
+    StringBuilder reporte = new StringBuilder();
+    reporte.append("RESULTADOS DE BÚSQUEDA\n\n");
+
+    boolean encontrado = false;
+    busqueda = busqueda.toLowerCase();
+
+    for (Usuario u : Lista) {
+        if (u.getCedula().toLowerCase().contains(busqueda) ||
+            u.getNombre().toLowerCase().contains(busqueda) ||
+            u.getApellido().toLowerCase().contains(busqueda) ||
+            u.getTelefono().toLowerCase().contains(busqueda) ||
+            u.getDireccion().toLowerCase().contains(busqueda)) {
+                
+            encontrado = true;
+            reporte.append("ID: ").append(u.getIdUsuario()).append("\n");
+            reporte.append("Cédula: ").append(u.getCedula()).append("\n");
+            reporte.append("Nombre: ").append(u.getNombre()).append("\n");
+            reporte.append("Apellido: ").append(u.getApellido()).append("\n");
+            reporte.append("Teléfono: ").append(u.getTelefono()).append("\n");
+            reporte.append("Dirección: ").append(u.getDireccion()).append("\n");
+            reporte.append("------------------------------------------\n");
+        }
+    }
+
+    if (!encontrado) {
+        reporte.append("No se encontraron usuarios que coincidan con '")
+                .append(busqueda).append("'");
+    }
+
+    JOptionPane.showMessageDialog(null, reporte.toString(),
+            "Resultados de Búsqueda",
+            JOptionPane.INFORMATION_MESSAGE);
+}
+    
+    public String Cant(){
+        List<Usuario> Lista = ListarUsuario();
+        return Lista.size() + "";
+    } 
 }
 
 

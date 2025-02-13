@@ -182,7 +182,7 @@ public class frmLocal extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void cant(){
+    public static void cant(){
         LocalDAO loc = new LocalDAO();
         jLabel3.setText("Locales: "+loc.Cant());
     }
@@ -280,7 +280,7 @@ public class frmLocal extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private static javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

@@ -160,7 +160,8 @@ LocalDAO localDAO = new LocalDAO();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese correctamente los datos");
-        }
+        } frmLocal.cant();
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
